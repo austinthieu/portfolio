@@ -1,0 +1,61 @@
+---
+import type { CollectionEntry } from "astro:content";
+
+export interface Props {
+  project: CollectionEntry<"projects">;
+  index: number;
+}
+
+const { project, index } = Astro.props;
+const { data } = project;
+---
+
+<a
+  href={`/projects/${project.id}`}
+  class="group block rounded-xl border border-card bg-card p-6 card-hover"
+  style={`animation-delay: ${index * 0.1}s`}
+>
+  <div class="flex items-center justify-between mb-4">
+    <span class="font-mono text-xs text-accent uppercase tracking-wider">
+      {data.category}
+    </span>
+    {data.featured && (
+      <span class="rounded-full bg-accent/10 px-2 py-0.5 font-mono text-[10px] text-accent">
+        Featured
+      </span>
+    )}
+  </div>
+  <h3 class="text-xl font-semibold tracking-tight mb-2 group-hover:text-accent transition-colors">
+    {data.title}
+  </h3>
+  <p class="text-sm text-secondary leading-relaxed mb-4 line-clamp-2">
+    {data.description}
+  </p>
+  <div class="flex flex-wrap gap-1.5 mb-4">
+    {data.tech.slice(0, 4).map((t) => (
+      <span class="font-mono text-[11px] text-muted border border-tag rounded px-2 py-0.5">
+        {t}
+      </span>
+    ))}
+    {data.tech.length > 4 && (
+      <span class="font-mono text-[11px] text-muted">
+        +{data.tech.length - 4}
+      </span>
+    )}
+  </div>
+  <div class="flex items-center justify-between">
+    <span class="text-xs text-muted font-mono">
+      {new Date(data.publishedDate).toLocaleDateString("en-US", {
+        year: "numeric",
+        month: "short",
+      })}
+    </span>
+    <span class="text-xs text-muted group-hover:text-accent transition-colors inline-flex items-center gap-1">
+      View project
+      <svg class="size-3 group-hover:translate-x-0.5 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M5 12h14" />
+        <path d="m12 5 7 7-7 7" />
+      </svg>
+    </span>
+  </div>
+</a>

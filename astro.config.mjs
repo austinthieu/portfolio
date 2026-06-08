@@ -1,0 +1,8 @@
+import { defineConfig } from "astro/config";
+import vercel from "@astrojs/vercel";
+
+export default defineConfig({
+  site: "https://austin-thieu.dev",
+  output: "static",
+  adapter: vercel(),
+});

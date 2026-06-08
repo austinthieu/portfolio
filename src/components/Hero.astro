@@ -1,0 +1,42 @@
+---
+import { SITE } from "@/lib/config";
+---
+
+<section id="hero" class="relative flex min-h-screen items-center justify-center px-6">
+  <div class="absolute inset-0 bg-gradient-to-b from-accent-glow/20 via-transparent to-transparent pointer-events-none" />
+  <div class="relative z-10 max-w-3xl mx-auto text-center">
+    <p class="font-mono text-sm text-accent mb-6 tracking-widest uppercase animate-fade-in">
+      Hello, I'm
+    </p>
+    <h1 class="text-5xl sm:text-7xl md:text-8xl font-bold tracking-tight leading-none mb-6 animate-fade-in-up" style="animation-delay: 0.1s">
+      {SITE.name}
+    </h1>
+    <p class="text-lg sm:text-xl text-secondary max-w-xl mx-auto mb-10 leading-relaxed animate-fade-in-up" style="animation-delay: 0.2s">
+      {SITE.description}
+    </p>
+    <div class="flex items-center justify-center gap-4 animate-fade-in-up" style="animation-delay: 0.3s">
+      <a
+        href="#projects"
+        class="inline-flex items-center gap-2 rounded-lg bg-accent px-6 py-3 text-sm font-medium text-white hover:bg-accent-dark transition-all hover:shadow-[0_0_24px_rgba(59,130,246,0.3)]"
+      >
+        View my work
+        <svg class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M5 12h14" />
+          <path d="m12 5 7 7-7 7" />
+        </svg>
+      </a>
+      <a
+        href="#contact"
+        class="inline-flex items-center gap-2 rounded-lg border border-outline px-6 py-3 text-sm font-medium text-primary hover:bg-outline hover:border-outline-hover transition-all"
+      >
+        Get in touch
+      </a>
+    </div>
+  </div>
+  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
+    <svg class="size-5 text-muted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M7 13l5 5 5-5" />
+      <path d="M7 6l5 5 5-5" />
+    </svg>
+  </div>
+</section>

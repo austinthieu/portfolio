@@ -1,0 +1,28 @@
+---
+import { SITE } from "@/lib/config";
+import ThemeToggle from "./ThemeToggle.astro";
+---
+
+<header class="fixed top-0 left-0 right-0 z-50 border-b border-header backdrop-blur-xl bg-header">
+  <nav class="mx-auto flex max-w-5xl items-center justify-between px-6 py-4">
+    <a href="/" class="font-mono text-sm font-medium tracking-tight text-primary hover:text-accent transition-colors">
+      {SITE.name}
+      <span class="text-accent">.</span>
+    </a>
+    <div class="flex items-center gap-8">
+      <ul class="hidden md:flex items-center gap-8">
+        {SITE.nav.map((item) => (
+          <li>
+            <a
+              href={item.href}
+              class="text-sm text-nav hover:text-nav-hover transition-colors"
+            >
+              {item.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+      <ThemeToggle />
+    </div>
+  </nav>
+</header>

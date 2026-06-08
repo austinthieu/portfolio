@@ -1,0 +1,50 @@
+---
+import { getCollection } from "astro:content";
+import ProjectCard from "./ProjectCard.astro";
+
+const projects = await getCollection("projects");
+const featured = projects.filter((p) => p.data.featured);
+const all = projects;
+---
+
+<section id="projects" class="relative px-6 py-32">
+  <div class="mx-auto max-w-5xl">
+    <div class="reveal section-hidden mb-16">
+      <p class="font-mono text-xs text-accent mb-3 tracking-widest uppercase">Projects</p>
+      <h2 class="text-3xl sm:text-4xl font-bold tracking-tight">
+        Selected work
+        <span class="text-accent">.</span>
+      </h2>
+    </div>
+
+    {featured.length > 0 && (
+      <>
+        <div class="grid md:grid-cols-2 gap-6 mb-12">
+          {featured.map((project, i) => (
+            <div class="reveal section-hidden" style={`animation-delay: ${i * 0.1}s`}>
+              <ProjectCard project={project} index={i} />
+            </div>
+          ))}
+        </div>
+      </>
+    )}
+
+    {all.length > 0 && (
+      <div class="reveal section-hidden">
+        <div class="grid md:grid-cols-3 gap-4">
+          {all.filter((p) => !p.data.featured).map((project, i) => (
+            <div class="reveal section-hidden" style={`animation-delay: ${i * 0.05}s`}>
+              <ProjectCard project={project} index={i + featured.length} />
+            </div>
+          ))}
+        </div>
+      </div>
+    )}
+
+    {all.length === 0 && (
+      <div class="reveal section-hidden rounded-xl border border-dashed border-outline p-12 text-center">
+        <p class="text-muted font-mono text-sm">Projects coming soon.</p>
+      </div>
+    )}
+  </div>
+</section>

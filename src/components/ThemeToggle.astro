@@ -1,0 +1,47 @@
+<button id="theme-toggle" class="relative flex h-8 w-8 items-center justify-center rounded-md border border-outline bg-outline text-secondary hover:text-primary hover:border-outline-hover transition-all" aria-label="Toggle theme">
+  <svg id="sun-icon" class="hidden size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="12" cy="12" r="4" />
+    <path d="M12 2v2" />
+    <path d="M12 20v2" />
+    <path d="m4.93 4.93 1.41 1.41" />
+    <path d="m17.66 17.66 1.41 1.41" />
+    <path d="M2 12h2" />
+    <path d="M20 12h2" />
+    <path d="m6.34 17.66-1.41 1.41" />
+    <path d="m19.07 4.93-1.41 1.41" />
+  </svg>
+  <svg id="moon-icon" class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+  </svg>
+</button>
+
+<script>
+  const btn = document.getElementById("theme-toggle");
+  const sun = document.getElementById("sun-icon");
+  const moon = document.getElementById("moon-icon");
+  const html = document.documentElement;
+
+  function setTheme(theme) {
+    if (theme === "light") {
+      html.classList.remove("dark");
+      html.classList.add("light");
+      localStorage.setItem("theme", "light");
+      sun?.classList.remove("hidden");
+      moon?.classList.add("hidden");
+    } else {
+      html.classList.remove("light");
+      html.classList.add("dark");
+      localStorage.setItem("theme", "dark");
+      sun?.classList.add("hidden");
+      moon?.classList.remove("hidden");
+    }
+  }
+
+  const current = localStorage.getItem("theme") || "dark";
+  setTheme(current);
+
+  btn?.addEventListener("click", () => {
+    const isDark = html.classList.contains("dark");
+    setTheme(isDark ? "light" : "dark");
+  });
+</script>

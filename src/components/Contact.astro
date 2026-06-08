@@ -1,0 +1,43 @@
+---
+import { SITE } from "@/lib/config";
+---
+
+<section id="contact" class="relative px-6 py-32">
+  <div class="mx-auto max-w-3xl text-center">
+    <div class="reveal section-hidden">
+      <p class="font-mono text-xs text-accent mb-3 tracking-widest uppercase">Contact</p>
+      <h2 class="text-3xl sm:text-4xl font-bold tracking-tight mb-6">
+        Let's work together
+        <span class="text-accent">.</span>
+      </h2>
+      <p class="text-secondary leading-relaxed mb-10 max-w-lg mx-auto">
+        Have a project in mind or just want to say hi? I'm always open to new opportunities
+        and interesting conversations.
+      </p>
+    </div>
+
+    <div class="reveal section-hidden flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
+      <a
+        href={`mailto:${SITE.links.email}`}
+        class="inline-flex items-center gap-2 rounded-lg bg-accent px-6 py-3 text-sm font-medium text-white hover:bg-accent-dark transition-all hover:shadow-[0_0_24px_rgba(59,130,246,0.3)]"
+      >
+        <svg class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect width="20" height="16" x="2" y="4" rx="2" />
+          <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+        </svg>
+        {SITE.links.email}
+      </a>
+    </div>
+
+    <div class="reveal section-hidden flex items-center justify-center gap-6">
+      {SITE.nav.map((item) => (
+        <a
+          href={item.href}
+          class="text-sm text-muted hover:text-primary transition-colors font-mono"
+        >
+          {item.label}
+        </a>
+      ))}
+    </div>
+  </div>
+</section>

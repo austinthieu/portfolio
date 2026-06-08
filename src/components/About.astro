@@ -1,0 +1,113 @@
+---
+const skills = [
+  "TypeScript", "React", "Next.js", "Node.js",
+  "Go", "Python", "PostgreSQL", "Docker",
+];
+---
+
+<section id="about" class="relative px-6 py-32">
+  <div class="mx-auto max-w-5xl">
+    <div class="reveal section-hidden">
+      <p class="font-mono text-xs text-accent mb-3 tracking-widest uppercase">About</p>
+      <h2 class="text-3xl sm:text-4xl font-bold tracking-tight mb-8">
+        Engineering reliable systems
+        <span class="text-accent">.</span>
+      </h2>
+    </div>
+    <div class="grid md:grid-cols-5 gap-12">
+      <div class="md:col-span-3 reveal section-hidden">
+        <p class="text-secondary leading-relaxed mb-6">
+          I'm a software developer focused on backend engineering and building reliable, scalable systems.
+          I enjoy designing APIs, developing microservices, working with databases, and creating the
+          infrastructure that powers modern applications. My approach emphasizes maintainable code,
+          performance, and long-term reliability.
+        </p>
+        <p class="text-secondary leading-relaxed mb-8">
+          Currently working primarily with C#, TypeScript, Node.js, PostgreSQL, and cloud technologies,
+          I enjoy solving complex technical problems and building systems that can scale from prototype
+          to production.
+        </p>
+        <div class="flex flex-wrap gap-2">
+          {skills.map((skill) => (
+            <span class="rounded-full border border-accent/20 bg-accent/5 px-3 py-1 text-xs font-mono text-accent">
+              {skill}
+            </span>
+          ))}
+        </div>
+      </div>
+      <div class="md:col-span-2 reveal section-hidden">
+        <div class="terminal border border-card bg-card rounded-xl overflow-hidden accent-glow">
+          <div class="flex items-center justify-between px-4 py-2.5 border-b border-card bg-noir-900/50">
+            <span class="text-xs font-mono text-muted">austin@portfolio:~/portfolio</span>
+          </div>
+          <div class="p-4 md:p-5 font-mono text-sm leading-relaxed space-y-1.5">
+            <div class="flex items-center gap-2">
+              <span class="text-green-400 shrink-0">$</span>
+              <span class="text-accent-light">whoami</span>
+            </div>
+            <div class="text-primary ml-5">Austin Thieu</div>
+            <div class="flex items-center gap-2">
+              <span class="text-green-400 shrink-0">$</span>
+              <span class="text-accent-light">title</span>
+            </div>
+            <div class="text-primary ml-5">Software Developer</div>
+            <div class="flex items-center gap-2">
+              <span class="text-green-400 shrink-0">$</span>
+              <span id="typing-line" class="text-accent-light"></span>
+              <span id="cursor" class="cursor-blink">▊</span>
+            </div>
+          </div>
+          <div class="flex items-center justify-between border-t border-card bg-noir-900/50 px-4 py-1.5 text-xs font-mono text-muted">
+            <div class="flex items-center gap-2">
+              <span class="text-accent/90">About.md</span>
+              <span class="hidden sm:inline">utf-8</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="hidden sm:inline">3:14</span>
+              <span class="text-accent/90">All</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .terminal {
+    background-color: var(--c-bg-card);
+  }
+  .cursor-blink {
+    animation: blink 1s step-end infinite;
+  }
+  @keyframes blink {
+    50% { opacity: 0; }
+  }
+</style>
+
+<script>
+  const text = "building scalable systems...";
+  const el = document.getElementById("typing-line");
+  const cursor = document.getElementById("cursor");
+  let i = 0;
+
+  function type() {
+    if (i < text.length) {
+      el.textContent += text.charAt(i);
+      i++;
+      setTimeout(type, 40 + Math.random() * 60);
+    }
+  }
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        setTimeout(type, 600);
+        observer.unobserve(entry.target);
+      }
+    });
+  });
+
+  const terminal = document.querySelector(".terminal");
+  if (terminal) observer.observe(terminal);
+</script>

@@ -1,0 +1,29 @@
+---
+import { SITE } from "@/lib/config";
+---
+
+<footer class="border-t border-header px-6 py-8">
+  <div class="mx-auto max-w-5xl flex flex-col sm:flex-row items-center justify-between gap-4">
+    <p class="text-sm text-muted font-mono">
+      &copy; {new Date().getFullYear()} {SITE.name}. All rights reserved.
+    </p>
+    <div class="flex items-center gap-6">
+      <a
+        href={SITE.links.github}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="text-sm text-muted hover:text-primary transition-colors"
+      >
+        GitHub
+      </a>
+      <a
+        href={SITE.links.linkedin}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="text-sm text-muted hover:text-primary transition-colors"
+      >
+        LinkedIn
+      </a>
+    </div>
+  </div>
+</footer>
